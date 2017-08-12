@@ -1,0 +1,17 @@
+<h2 md-dialog-title>Editing</h2>
+<md-dialog-content>
+  <md-input-container>
+    <input mdInput placeholder="Author" [(ngModel)]="dataDialog.author">
+  </md-input-container>
+  <md-input-container>
+    <input mdInput placeholder="Date" [(ngModel)]="dataDialog.date" type="date">
+  </md-input-container>
+  <md-input-container>
+    <input mdInput placeholder="Title" [(ngModel)]="dataDialog.title">
+  </md-input-container>
+</md-dialog-content>
+<md-dialog-actions>
+  <button md-raised-button (click)="dialogRef.close()">Cancel</button>
+  <!-- Can optionally provide a result for the closing dialog. -->
+  <button md-raised-button md-dialog-close>Save</button>
+</md-dialog-actions>

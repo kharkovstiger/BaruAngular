@@ -1,0 +1,68 @@
+<div class="example-container mat-elevation-z8">
+  <md-table #table [dataSource]="dataSource">
+
+    <md-header-row *cdkHeaderRowDef="displayedColumns"></md-header-row>
+    <md-row *cdkRowDef="let row; columns: displayedColumns;"></md-row>
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Author Column -->
+    <ng-container cdkColumnDef="author">
+      <md-header-cell *cdkHeaderCellDef> Author </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.author}} </md-cell>
+    </ng-container>
+
+    <!-- Date Column -->
+    <ng-container cdkColumnDef="date">
+      <md-header-cell *cdkHeaderCellDef> Date </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.date | date}} </md-cell>
+    </ng-container>
+
+    <!-- Title Column -->
+    <ng-container cdkColumnDef="title">
+      <md-header-cell *cdkHeaderCellDef> Title </md-header-cell>
+      <md-cell *cdkCellDef="let row"> {{row.title}} </md-cell>
+    </ng-container>
+
+    <ng-container cdkColumnDef="actions">
+      <md-header-cell > Actions </md-header-cell>
+      <md-cell *cdkCellDef="let row" >
+        <!--<button md-raised-button (click)="edit(row)">Edit</button>-->
+        <button md-raised-button data-toggle="modal" data-target="#myModal">Edit</button>
+      </md-cell>
+    </ng-container>
+
+  </md-table>
+</div>
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Editing</h2>
+      </div>
+      <div class="modal-body">
+        <md-input-container>
+          <input mdInput placeholder="Author" >
+        </md-input-container>
+        <md-input-container>
+          <input mdInput placeholder="Date"  type="date">
+        </md-input-container>
+        <md-input-container>
+          <input mdInput placeholder="Title" >
+        </md-input-container>
+
+
+      </div>
+      <div class="modal-footer">
+        <button md-raised-button >Cancel</button>
+        <!-- Can optionally provide a result for the closing dialog. -->
+        <button md-raised-button >Save</button>
+      </div>
+    </div>
+
+  </div>
+</div>
